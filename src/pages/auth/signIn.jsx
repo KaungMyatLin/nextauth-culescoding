@@ -31,23 +31,21 @@ const providers = [
 ]
 
 
-const SignIn = () => {
+const Signin = () => {
     const { em, setEm } = useState();
     const {data: session, status} = useSession();
     const {push} = useRouter();
-    if (status === 'loading') {
-        return <Heading>Checking Authenti...</Heading>
-    }
+    if (status === 'loading') { return <Heading>Checking Authenti...</Heading> }
     if (session) {
         setTimeout( () => {
             push('/')
         }, 5000)
-        return <Heading>Alrdy signedIn...</Heading>
+        return <Heading>you are alrdy signedIn...</Heading>
     }
     const OAuthSignInHdl = (providern) => () => signIn(providern)
     const submHdl = (e) => {
         e.preventDefault()
-        if (!em) return;
+        if (!em) return false;
         signIn('email', {em, redirect: false})
     }
     return (
@@ -60,12 +58,12 @@ const SignIn = () => {
             </chakra.form>
             <VStack>
                 {providers.map(({name, Icon})=> (
-                    <Button 
-                    key={name} 
-                    leftIcon={<Icon/>} 
-                    onClick={OAuthSignInHdl(name)}
-                    textTransform='uppercase'
-                    w='100%'
+                    <Button
+                        key={name}
+                        leftIcon={<Icon/>}
+                        onClick={OAuthSignInHdl(name)}
+                        textTransform='uppercase'
+                        w='100%'
                     >
                         Sign In with {name}
                     </Button>
@@ -75,4 +73,4 @@ const SignIn = () => {
     )
 }
 
-export default SignIn
+export default Signin

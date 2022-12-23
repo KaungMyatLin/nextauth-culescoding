@@ -10,14 +10,12 @@ const Home = () => {
     const data = await signOut({redirect: false, callbackUrl: '/'})
     router.push(data.url)
   }
-
   const signInHdl = async() => {
     router.push(`/auth/signIn?callbackUrl=${router.asPath}`)
   }
-
   return (
     <Grid placeItems='center' gridRowGap='1rem'>
-      { session? 
+      { session?
         <>
           <Heading>signed in as {session.user.email}</Heading>
           <Button onClick={signOutHdl}>Sign out</Button>
