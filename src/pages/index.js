@@ -11,7 +11,7 @@ const Home = () => {
     router.push(data.url)
   }
   const signInHdl = async() => {
-    router.push(`/auth/signIn?callbackUrl=${router.asPath}`)
+    router.push(`/auth/signin?callbackUrl=${router.asPath}`)
   }
   return (
     <Grid placeItems='center' gridRowGap='1rem'>

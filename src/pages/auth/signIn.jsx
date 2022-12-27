@@ -32,7 +32,7 @@ const providers = [
 
 
 const Signin = () => {
-    const { em, setEm } = useState();
+    const [em, setEm] = useState();
     const {data: session, status} = useSession();
     const {push} = useRouter();
     if (status === 'loading') { return <Heading>Checking Authenti...</Heading> }
@@ -52,7 +52,7 @@ const Signin = () => {
         <Box>
             <chakra.form onSubmit={submHdl}>
                 <FormLabel>Email Address</FormLabel>
-                <Input type='email' onChange={e => setEm(e.target.value)} />
+                <Input value={em} type='email' onChange={e => setEm(e.target.value)} />
 
                 <Button type='submit' w='100%' my={5}>Login</Button>
             </chakra.form>
